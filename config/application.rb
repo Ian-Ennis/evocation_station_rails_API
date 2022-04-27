@@ -17,6 +17,13 @@ module EvocationStationBackend
 
     config.action_dispatch.cookies_same_site_protection = :strict
 
+    # use Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', headers: :any, methods: :any
+    #   end  
+    # end
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
