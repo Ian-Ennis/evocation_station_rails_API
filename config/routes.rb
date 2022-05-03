@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # routes to log in and log out using a session activation/destroyal
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  # test
 end
