@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # get 'sessions/create'
   # get 'sessions/destroy'
-  resources :users, only: [:create, :destroy]
+  resources :users, only: [:create, :show, :destroy]
 
   get '/me', to: "users#show"
   get '/signup', to: "users#create"
