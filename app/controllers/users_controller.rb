@@ -4,9 +4,10 @@ class UsersController < ApplicationController
         user = User.create!(user_params)
         if user.valid?
             puts "***User is Valid***"
-            puts "user id is: #{user.id}"
+            puts "***user id is: #{user.id}"
             session[:user_id] = user.id # this is the piece that logs a user in and keeps track of users info in subsequent requests.
-            puts "session user id below"
+            puts "***session user id below"
+            session.to_h
             puts session[:user_id]
             puts params
             puts session[:user_id]
@@ -23,8 +24,9 @@ class UsersController < ApplicationController
 
   def show
     puts "^^^^^^^ in /me"
-    puts "session user id: #{session[:user_id]}"
-    user = User.find_by_id!(session[:user_id])
+    puts session
+    puts session[:user_id]
+    user = User.find_by_id(session[:user_id])
 
     if user
         puts "*** Current user exists ***"
@@ -36,6 +38,8 @@ class UsersController < ApplicationController
 end
     
     def destroy
+        puts "***in users destroy."
+        puts session[:user_id]
         User.find(session[:user_id]).destroy
         session[:user_id] = nil
         head :no_content
