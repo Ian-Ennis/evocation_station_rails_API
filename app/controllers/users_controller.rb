@@ -1,47 +1,18 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize_user, only: [:create, :destroy]
 
     def create
+        puts "*** in user create, USER"
         user = User.create!(user_params)
-        if user.valid?
-            puts "***User is Valid***"
-            puts "***user id is: #{user.id}"
-            session[:user_id] = user.id # this is the piece that logs a user in and keeps track of users info in subsequent requests.
-            puts "***session user id below"
-            session.to_h
-            puts session[:user_id]
-            puts params
-            puts session[:user_id]
-            puts "---user create instance--- #{user.inspect}"
-            userSearch = User.find_by_id!(session[:user_id])
-            puts "user found instance: #{userSearch}"
-            puts "user found instance: #{userSearch}"
-            puts "user found instance: #{userSearch}"
-            render json: user, status: :created
-        else
-            render json: user.errors.full_messages, status: :unprocessable_entity
-        end
-    end
+        session[:current_user] = user.id
+        render json: user, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end 
 
-  def show
-    puts "^^^^^^^ in /me"
-    puts session
-    puts session[:user_id]
-    user = User.find_by_id(session[:user_id])
-
-    if user
-        puts "*** Current user exists ***"
-        render json: user, status: :ok
-    else
-        puts "*** Current user does not exist ***"
-        render json: "No one is logged in", status: :unauthorized
-    end
-end
-    
     def destroy
-        puts "***in users destroy."
-        puts session[:user_id]
-        User.find(session[:user_id]).destroy
-        session[:user_id] = nil
+        puts "*** in destroy, USER."
+        session.delete :current_user
         head :no_content
         puts "***User session has been destroyed***"
     rescue ActiveRecord::RecordNotFound => error

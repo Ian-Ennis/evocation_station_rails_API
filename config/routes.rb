@@ -5,13 +5,15 @@ Rails.application.routes.draw do
 
   # get 'sessions/create'
   # get 'sessions/destroy'
-  resources :users, only: [:index, :create, :show, :destroy]
+  resources :users
+  resources :evocations
 
-  get '/me', to: "users#show"
+  # get '/me', to: "users#show"
   get '/signup', to: "users#create"
+  post "/login", to: "sessions#login"
+  delete "/logout", to: "users#destroy"
+  
+  # get '/evocations', to: "evocations#index"
 
-  # routes to log in and log out using a session activation/destroyal
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-  # test
 end
+

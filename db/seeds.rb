@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Deleting users..."
+User.destroy_all
+puts "Users deleted"
+
+puts "Deleting evocations..."
+Evocation.destroy_all
+puts "Evocations deleted"
+
+puts "Seeding evocations.."
+Evocation.create!(text: "first evocation")
+Evocation.create!(text: "second evocation")
+puts "Done seeding"

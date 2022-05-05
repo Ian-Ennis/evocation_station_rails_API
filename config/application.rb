@@ -20,12 +20,12 @@ module EvocationStationBackend
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
 
-    # use Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*', headers: :any, methods: :any
-    #   end  
-    # end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => :any
+      end
+    end
     
     # Configuration for the application, engines, and railties goes here.
     #
