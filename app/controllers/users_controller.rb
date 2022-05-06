@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     def destroy
         puts "*** in destroy, USER."
-        session.delete :current_user
+        @_current_user = session[:current_user_id] = nil
         head :no_content
         puts "***User session has been destroyed***"
     rescue ActiveRecord::RecordNotFound => error

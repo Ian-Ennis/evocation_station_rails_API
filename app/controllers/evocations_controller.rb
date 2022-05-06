@@ -1,5 +1,5 @@
 class EvocationsController < ApplicationController
-    before_action :authorize
+    # before_action :authorize
     # skip_before_action :authorize, only: [:index]
 
     def index 
@@ -10,14 +10,15 @@ class EvocationsController < ApplicationController
     def create 
         puts "*** in create, EVOCATIONS"
         evocation = Evocation.create!(evocation_params)
+        render json: evocation
     end
 
     private 
 
-    def authorize
-        puts "*** in authorize, EVOCATIONS"
-        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :current_user
-    end
+    # def authorize
+    #     puts "*** in authorize, EVOCATIONS"
+    #     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :current_user
+    # end
 
     def evocation_params
         params.permit(:text)

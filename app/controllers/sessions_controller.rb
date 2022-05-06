@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
           puts session[:current_user]
           session[:login_attempts] = 0
           render json: user, status: :ok
+          # redirect_to root_url
       else
         puts "*** no user or can't authenticate, SESSIONS"
           session[:login_attempts] ||= 0
