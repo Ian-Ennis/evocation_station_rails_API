@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       puts user
       if user&.authenticate(params[:password])
           session[:current_user] = user.id
+          puts "########################"
           puts session[:current_user]
           session[:login_attempts] = 0
           render json: user, status: :ok

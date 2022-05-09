@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
         puts "*** in current_user, APP"
         @_current_user ||= session[:current_user] &&
         User.find_by(id: session[:current_user])
+        puts @_current_user
     end
 
     def authorize_user

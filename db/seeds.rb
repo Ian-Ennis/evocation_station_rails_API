@@ -15,6 +15,6 @@ Evocation.destroy_all
 puts "Evocations deleted"
 
 puts "Seeding evocations.."
-Evocation.create!(text: "first evocation")
-Evocation.create!(text: "second evocation")
+# Evocation.create!(text: "first evocation")
+# Evocation.create!(text: "second evocation")
 puts "Done seeding"

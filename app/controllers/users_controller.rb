@@ -5,6 +5,8 @@ class UsersController < ApplicationController
         puts "*** in user create, USER"
         user = User.create!(user_params)
         session[:current_user] = user.id
+        puts "############################"
+        puts session[:current_user]
         render json: user, status: :created
     rescue ActiveRecord::RecordInvalid => invalid
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
@@ -12,6 +14,8 @@ class UsersController < ApplicationController
 
     def destroy
         puts "*** in destroy, USER."
+        puts "########################"
+        puts session[:current_user]
         @_current_user = session[:current_user_id] = nil
         head :no_content
         puts "***User session has been destroyed***"
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:user_id, :username, :password)
     end
 
 end
