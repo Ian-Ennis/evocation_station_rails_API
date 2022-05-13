@@ -20,9 +20,4 @@ class SessionsController < ApplicationController
       end
   end 
 
-  # def logout
-  #   puts "*** in sessions logout, SESSIONS"
-  #   puts session[:current_user]
-  #     session.delete :current_user
-  # end 
 end

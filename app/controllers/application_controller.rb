@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     include ActionController::Cookies
     skip_before_action :verify_authenticity_token
     before_action :authorize_user #this is a filter
-    skip_before_action :authorize_user, only: [:index, :create] # for all index methods; relocate to respective controllers as needed
+    skip_before_action :authorize_user, only: [:index, :show, :create, :update, :destroy] # for all index methods; relocate to respective controllers as needed
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize_user
+        puts "*** in authorize_user, APP"  
         puts session
         puts session[:current_user]
-        puts "*** in authorize_user, APP"  
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :current_user
     end
 

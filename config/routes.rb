@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # get 'sessions/destroy'
   resources :users
   resources :evocations
+  resources :phrases
+  resources :poems
 
   # get '/me', to: "users#show"
   get '/signup', to: "users#create"
