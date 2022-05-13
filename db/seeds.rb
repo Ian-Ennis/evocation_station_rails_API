@@ -6,13 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "Deleting users..."
 User.destroy_all
-puts "Users deleted"
 
-puts "Deleting evocations..."
 Evocation.destroy_all
-puts "Evocations deleted"
 
 puts "Seeding phrases..."
 Phrase.create(text: "aberration")
@@ -204,7 +200,11 @@ Poem.create(text: "What happens to a dream deferred?
 
 puts "Poems seeded"
 
-puts "Seeding evocations.."
+puts "Seeding images..."
+# Image.create!(audio: "")
+puts "Images seeded"
+
+# puts "Seeding evocations.."
 # Evocation.create!(text: "first evocation", fi)
 # Evocation.create!(text: "second evocation")
-puts "Done seeding"
+# puts "Done seeding"

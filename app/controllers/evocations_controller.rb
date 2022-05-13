@@ -6,6 +6,7 @@ class EvocationsController < ApplicationController
     end
 
     def show
+        puts "in show, EVOCATIONS"
         puts params
         evocation = Evocation.find(params[:id])
         render json: evocation
@@ -13,11 +14,7 @@ class EvocationsController < ApplicationController
 
     def create 
         puts "*** in create, EVOCATIONS"
-        puts "########################"
-        puts session[:current_user]
-        puts params
         evocation = Evocation.create!(evocation_params)
-        puts evocation
         render json: evocation
     end
 

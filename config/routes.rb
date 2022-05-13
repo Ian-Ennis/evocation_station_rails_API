@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :evocations
   resources :phrases
   resources :poems
+  resources :images
+  resources :sounds
 
   # get '/me', to: "users#show"
   get '/signup', to: "users#create"
