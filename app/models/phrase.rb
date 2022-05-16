@@ -1,3 +1,0 @@
-class Phrase < ApplicationRecord
-
-end

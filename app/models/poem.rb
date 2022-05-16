@@ -1,3 +1,0 @@
-class Poem < ApplicationRecord
-    
-end

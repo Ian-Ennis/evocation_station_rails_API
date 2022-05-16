@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   # get 'sessions/destroy'
   resources :users
   resources :evocations
-  resources :phrases
-  resources :poems
+  resources :writings
   resources :images
   resources :sounds
 
