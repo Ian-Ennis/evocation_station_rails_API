@@ -1,5 +1,5 @@
 class SoundSerializer < ActiveModel::Serializer
-    attributes :id, :audio
+    attributes :id, :audio, :audio_name
 
     include Rails.application.routes.url_helpers
 

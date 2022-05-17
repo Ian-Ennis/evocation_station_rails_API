@@ -1,26 +1,26 @@
 class SoundsController < ApplicationController
 
     def index
-        puts "*** in POEMS index"
+        puts "*** in SOUNDS index"
         render json: Sound.all
     end
 
     def show
-        puts "*** in POEMS show"
+        puts "*** in SOUNDS show"
         sound = Sound.find(params[:id])
         render json: sound
     end
 
     def create
-        puts "*** in POEMS create"
+        puts "*** in SOUNDS create"
         sound = Sound.create!(sound_params)
     end
 
     private
 
     def sound_params
-        puts "*** in POEMS params"
-        params.permit(:id, :audio)
+        puts "*** in SOUNDS params"
+        params.permit(:id, :audio, :audio_name)
     end
 
 end

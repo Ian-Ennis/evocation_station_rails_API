@@ -1,25 +1,25 @@
 class ImagesController < ApplicationController
 
     def index
-        puts "*** in POEMS index"
+        puts "*** in IMAGES index"
         render json: Image.all
     end
 
     def show
-        puts "*** in POEMS show"
+        puts "*** in IMAGES show"
         image = Image.find(params[:id])
         render json: image
     end
 
     def create
-        puts "*** in POEMS create"
+        puts "*** in IMAGES create"
         image = Image.create!(image_params)
     end
 
     private
 
     def image_params
-        puts "*** in POEMS params"
+        puts "*** in IMAGES params"
         params.permit(:user_id, :id, :image)
     end
 

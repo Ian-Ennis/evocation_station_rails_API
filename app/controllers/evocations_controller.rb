@@ -15,6 +15,7 @@ class EvocationsController < ApplicationController
     def create 
         puts "*** in create, EVOCATIONS"
         evocation = Evocation.create!(evocation_params)
+        puts evocation
         render json: evocation
     end
 
@@ -32,6 +33,6 @@ class EvocationsController < ApplicationController
     # end
 
     def evocation_params
-        params.permit(:user_id, :id, :image, :audio, :text)
+        params.permit(:user_id, :id, :text, :image, :audio)
     end
 end
