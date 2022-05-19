@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-Evocation.destroy_all
+Newevocation.destroy_all
 
 Writing.destroy_all
 

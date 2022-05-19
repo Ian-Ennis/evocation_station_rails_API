@@ -1,6 +1,6 @@
-class CreateEvocations < ActiveRecord::Migration[7.0]
+class CreateNewevocations < ActiveRecord::Migration[7.0]
   def change
-    create_table :evocations do |t|
+    create_table :newevocations do |t|
       t.string :text
 
       t.references :user, foreign_key: true

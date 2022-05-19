@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
 
     def image_params
         puts "*** in IMAGES params"
-        params.permit(:user_id, :id, :image, :image_url)
+        params.permit(:user_id, :id, :image)
     end
 
 end

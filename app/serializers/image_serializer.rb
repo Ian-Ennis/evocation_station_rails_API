@@ -1,5 +1,5 @@
 class ImageSerializer < ActiveModel::Serializer
-    attributes :id, :image, :image_url
+    attributes :id, :image
 
     include Rails.application.routes.url_helpers
 

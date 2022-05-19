@@ -1,0 +1,3 @@
+class Prebuiltevocation < ApplicationRecord
+
+end

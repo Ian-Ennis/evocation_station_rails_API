@@ -1,4 +1,4 @@
-class EvocationSerializer < ActiveModel::Serializer
+class NewevocationSerializer < ActiveModel::Serializer
     attributes :id, :image, :audio, :text
 
     include Rails.application.routes.url_helpers

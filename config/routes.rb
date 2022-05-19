@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'prebuilt/evocation'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
@@ -6,7 +7,8 @@ Rails.application.routes.draw do
   # get 'sessions/create'
   # get 'sessions/destroy'
   resources :users
-  resources :evocations
+  resources :newevocations
+  resources :prebuiltevocations
   resources :writings
   resources :images
   resources :sounds
