@@ -34,7 +34,7 @@ class PrebuiltevocationsController < ApplicationController
     # end
 
     def evocation_params
-        params.permit(:user_id, :id, :text, :image_url)
+        params.permit(:user_id, :id, :text, :image_url, :sound_url)
     end
   
 end
