@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize_user, only: [:create, :destroy]
+    skip_before_action :authorize_user, only: [:index, :create, :show, :destroy]
+
+    def index 
+        render json: User.all
+    end 
 
     def create
         puts "*** in user create, USER"
@@ -11,6 +15,12 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordInvalid => invalid
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end 
+
+    def show
+        user = User.find(params[:id])
+        render json: user
+            # , include: :tickets
+    end
 
     def destroy
         puts "*** in destroy, USER."
