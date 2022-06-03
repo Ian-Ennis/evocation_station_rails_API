@@ -34,5 +34,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Cloudinary API key
-/config/cloudinary.yml
+
+
