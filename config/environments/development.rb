@@ -18,7 +18,7 @@ Rails.application.configure do
   config.server_timing = true
 
   # configuration for aws development environment
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

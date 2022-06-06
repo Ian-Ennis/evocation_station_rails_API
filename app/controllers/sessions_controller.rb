@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize_user, only: [:create, :login, :logout]
+  before_action :authorize_user, except: [:login]
+
 
   def login
     puts "*** in sessions create, SESSIONS"
-      user = User.find_by(username: params[:username])
-      puts user
-      if user&.authenticate(params[:password])
+    user = User.find_by(username:params[:username])
+    puts user
+
+    if user&.authenticate(params[:password])
           session[:current_user] = user.id
           puts "########################"
           puts session[:current_user]
@@ -19,5 +21,9 @@ class SessionsController < ApplicationController
           render json:{error:"Invalid Password and/or Username"},  status: :unauthorized
       end
   end 
+
+  def logout
+    session.delete :current_user
+  end
 
 end

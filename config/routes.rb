@@ -15,10 +15,21 @@ Rails.application.routes.draw do
 
   # get '/me', to: "users#show"
   get '/signup', to: "users#create"
-  post "/login", to: "sessions#login"
-  delete "/logout", to: "users#destroy"
+  post '/login', to: 'sessions#login'
+  get '/authorized_user', to: 'users#show'
+  delete '/logout', to: 'sessions#logout'
   
   # get '/evocations', to: "evocations#index"
 
 end
+
+
+
+
+
+
+
+
+
+
 
