@@ -46,6 +46,8 @@ gem "bootsnap", require: false
 
 gem "active_model_serializers"
 
+gem 'aws-sdk-s3'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

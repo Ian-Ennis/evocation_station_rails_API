@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     helper_method :current_user
-    include SessionsHelper
     
     def current_user
         puts "*** in current_user, APP"
