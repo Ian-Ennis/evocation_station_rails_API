@@ -27,11 +27,6 @@ class NewevocationsController < ApplicationController
 
     private
 
-    # def authorize
-    #     puts "*** in authorize, EVOCATIONS"
-    #     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :current_user
-    # end
-
     def evocation_params
         params.permit(:user_id, :id, :text, :image, :audio)
     end
