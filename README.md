@@ -2,7 +2,7 @@
 
 ## Built With
 
-* [Ruby on Rails](https://react-redux.js.org/](https://create-react-app.dev/)
+* [Ruby on Rails](https://guides.rubyonrails.org/getting_started.html)
 
 
 
