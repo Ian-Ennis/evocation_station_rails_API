@@ -1,4 +1,4 @@
-# README
+# Evocation Station Rails API
 
 ## Built With
 
