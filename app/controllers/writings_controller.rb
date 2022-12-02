@@ -1,24 +1,18 @@
 class WritingsController < ApplicationController
 
     def index
-        puts "*** in WRITINGS index"
-        render json: Writing.all
-    end
-
-    def show
-        puts "*** in WRITINGS show"
-        writing = Writing.find(params[:id])
-        render json: writing
+        @user = User.find(@user.id)
+        @writings = @user.writings
+        render json: @writings
     end
 
     def create
-        puts "*** in WRITINGS create"
-        writing = Writing.create!(writing_params)
+        writing = Writing.create!(user_id: params[:user_id], text: params[:text])
     end
 
     private
 
     def writing_params
-        params.permit(:id, :text)
+        params.permit(:user_id, :id, :text)
     end
 end

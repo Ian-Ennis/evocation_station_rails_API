@@ -4,6 +4,7 @@ class CreatePrebuiltevocations < ActiveRecord::Migration[7.0]
       t.string :text
       t.string :image_url
       t.string :sound_url
+      t.references :user, type: :integer, foreign_key: true
 
       t.timestamps
     end

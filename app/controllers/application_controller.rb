@@ -1,37 +1,41 @@
-class ApplicationController < ActionController::Base
-    include ActionController::Cookies
-    skip_before_action :verify_authenticity_token
-    before_action :authorize_user #this is a filter
-    skip_before_action :authorize_user, only: [:index, :show, :create, :update, :destroy] # for all index methods; relocate to respective controllers as needed
-    rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
-    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
-    helper_method :current_user
-    
-    def current_user
-        puts "*** in current_user, APP"
-        @_current_user ||= session[:current_user] &&
-        User.find_by(id: session[:current_user])
-        puts @_current_user
+class ApplicationController < ActionController::API
+    before_action :require_login
+  
+    def encode_token(payload)
+      # should store secret in env variable
+      JWT.encode(payload, 'irkdhwusixedhfrowmopsqwj08317840291')
     end
-
-    def authorize_user
-        puts "*** in authorize_user, APP"  
-        puts session
-        puts session[:current_user]
-        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :current_user
+  
+    def auth_header
+      # { Authorization: 'Bearer <token>' }
+      request.headers['Authorization']
     end
-
-    private
-
-    def record_invalid(invalid)
-        puts "*** in record_invalid, APP"
-        render json: {error: invalid.record.errors.full_messages}, status: :unprocessasble_entity
+  
+    def decoded_token
+      if auth_header
+        token = auth_header.split(' ')[1]
+        # header: { 'Authorization': 'Bearer <token>' }
+        begin
+          JWT.decode(token, 'irkdhwusixedhfrowmopsqwj08317840291', true, algorithm: 'HS256')
+        rescue JWT::DecodeError
+          nil
+        end
+      end
     end
-
-    def record_not_found(e)
-        puts "*** in record_not_found, APP"
-        render json: {error: e.record.errors.full_messages}, status: :not_found
-    end 
-
-end
+  
+    def session_user
+      if decoded_token
+        user_id = decoded_token[0]['user_id']
+        @user = User.find_by(id: user_id)
+      end
+    end
+  
+    def logged_in?
+      !!session_user
+    end
+  
+    def require_login
+      render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
+     end
+  
+  end
