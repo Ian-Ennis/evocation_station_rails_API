@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
   # get 'welcome/index'
+  root 'welcome#index'
 
   namespace :api do
     namespace :v1 do
@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :newevocations, only: [:create, :destroy]
-  resources :prebuiltevocations, only: [:create, :destroy]
+  resources :newevocations
+  resources :prebuiltevocations
   resources :writings
   resources :images
   resources :sounds

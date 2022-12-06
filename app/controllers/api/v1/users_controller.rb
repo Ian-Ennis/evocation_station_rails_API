@@ -7,9 +7,12 @@ class Api::V1::UsersController < ApplicationController
   
     def create
       @user = User.create!(user_params)
+
       if @user.valid?
         puts "*** user is valid"
         @token = encode_token({ user_id: @user.id })
+        puts "token:"
+        puts @token
         render json: { user: @user, jwt: @token }, status: :created
       else
         puts "*** user is not valid"
