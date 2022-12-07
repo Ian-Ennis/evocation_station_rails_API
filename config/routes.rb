@@ -19,5 +19,8 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "users#destroy"
   
+  get '*path',
+  to: 'fallback#index',
+  constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 

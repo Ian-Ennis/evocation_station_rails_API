@@ -1,18 +1,8 @@
 class WritingsController < ApplicationController
+    skip_before_action :require_login, only: [:index]
 
     def index
-        @user = User.find(@user.id)
-        @writings = @user.writings
-        render json: @writings
+        render json: Writing.all
     end
 
-    def create
-        writing = Writing.create!(user_id: params[:user_id], text: params[:text])
-    end
-
-    private
-
-    def writing_params
-        params.permit(:user_id, :id, :text)
-    end
 end
