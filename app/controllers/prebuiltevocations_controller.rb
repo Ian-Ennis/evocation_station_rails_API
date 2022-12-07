@@ -1,24 +1,21 @@
 class PrebuiltevocationsController < ApplicationController
-    # skip_before_action :require_login, only: [:index, :create]
+    skip_before_action :require_login, only: [:index]
 
     def index 
-        render json: Prebuiltevocation.all
+        @user = current_user
+        @prebuiltevocations = @user.prebuiltevocations
+        render json: @prebuiltevocations
     end
 
-    # def create 
-    #     evocation = Prebuiltevocation.create!(evocation_params)
-    #     render json: evocation
-    # end
+    def create 
+        evocation = Prebuiltevocation.create!(evocation_params)
+        render json: evocation
+    end
 
-    # def destroy
-    #     evocation = Prebuiltevocation.find(params[:id])
-    #     evocation.destroy
-    # end
+    private
 
-    # private
-
-    # def evocation_params
-    #     params.permit(:user_id, :id, :text, :image_url, :sound_url)
-    # end
+    def evocation_params
+        params.permit(:user_id, :id, :text, :image_url, :sound_url)
+    end
   
 end

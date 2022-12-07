@@ -5,11 +5,11 @@ class Api::V1::UsersController < ApplicationController
     @user = User.create!(user_params)
     
     if @user.valid?
-      puts "*** user is valid"
+      puts "-> user is valid"
       @token = encode_token({ user_id: @user.id })
       render json: { user: @user, jwt: @token }, status: :created
     else
-      puts "*** user is not valid"
+      puts "-> user not valid"
       render json: { error: 'failed to create user' }, status: :unprocessable_entity
     end
   end

@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :newevocations
-  resources :prebuiltevocations
-  resources :writings
-  resources :images
-  resources :sounds
+  resources :newevocations, only: [:index, :create, :destroy]
+  resources :prebuiltevocations, only: [:index, :create]
+  resources :writings, only: [:index]
+  resources :images, only: [:index]
+  resources :sounds, only: [:index]
 
   delete "/logout", to: "users#destroy"
   
