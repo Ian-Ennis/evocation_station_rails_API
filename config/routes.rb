@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :newevocations, only: [:index, :create, :destroy]
-  resources :prebuiltevocations, only: [:index, :create]
+  resources :prebuiltevocations, only: [:index, :create, :destroy]
   resources :writings, only: [:index]
   resources :images, only: [:index]
   resources :sounds, only: [:index]
