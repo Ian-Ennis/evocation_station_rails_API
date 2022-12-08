@@ -1,5 +1,5 @@
 class PrebuiltevocationSerializer < ActiveModel::Serializer
-    attributes :id, :text, :image_url, :sound_url
+    attributes :user_id, :id, :text, :image, :audio
 
   end
   
